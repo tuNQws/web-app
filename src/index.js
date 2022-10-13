@@ -1,7 +1,23 @@
 const express = require("express");
+const morgan = require("morgan");
+const path = require("path");
 const app = express();
+const handlebars = require("express-handlebars");
 const port = process.env.PORT || 3000;
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+//HTTP Logger
+app.use(morgan('combined'));
+
+//Template engine
+app.engine('handlebars', handlebars.engine());
+app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'resources/views'));
+
+app.get('/', (req, res) => {
+    res.render('home');
+});
 
 const COURSES = [
     { id: 1, name: "Nodejs"},
@@ -10,6 +26,7 @@ const COURSES = [
 ];
 
 //GET
+
 app.get("/api/courses/:id", (req, res) => {
 
     const course = COURSES.find(COURSES => COURSES.id === parseInt(req.params.id));
@@ -32,7 +49,7 @@ app.get("/api/courses/", (req, res) => {
     //     'X-Powered-By' : 'Node.js'
     // });
 
-    res.end(JSON.stringify({
+    res.send(JSON.stringify({
         success: true,
         data: COURSES
     }));

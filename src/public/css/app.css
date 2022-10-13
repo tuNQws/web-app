@@ -1,0 +1,22 @@
+*   {
+    font-size: 20px;
+    color: rgb(9, 9, 145);
+}
+h1  {
+    font-size: 30px;
+}
+h2  {
+    font-size: 25px;
+}
+th  {
+    text-align: left;
+}
+.check  {
+    color: orange;
+}
+.skill-table    {
+    width: 30%;
+}
+#skill-th   {
+    height: 50px;
+}

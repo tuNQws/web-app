@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../testreact1"
+		},
+		{
+			"path": "../test"
+		},
+		{
+			"path": "../nodejs/blog_bk/blog"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../sample-code"
+		}
+	],
+	"settings": {}
+}

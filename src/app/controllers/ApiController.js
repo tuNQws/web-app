@@ -1,4 +1,4 @@
-const Course = require('../../models/Course');
+const Course = require('../models/Course');
 const express = require('express');
 const app = express();
 

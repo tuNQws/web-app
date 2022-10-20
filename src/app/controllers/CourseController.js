@@ -1,13 +1,19 @@
-const Course = require('../../models/Course');
+const Course = require('../models/Course');
 const express = require('express');
 const app = express();
-
-app.use(express.json());
+const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 
 class CourseController{
     // [GET]
     index(req, res, next){
-        res.render('courses/create');
+        Course.find({})
+        .then(courses => {
+            res.render('courses/mycourse', { 
+                courses: multipleMongooseToObject(courses)
+            });
+
+        })
+        .catch(next);
     }
 
     show(req, res, next){
@@ -18,6 +24,13 @@ class CourseController{
         .catch(next);
     }
 
+    edit(req, res, next){
+        Course.findById(req.params.id)
+        .then(course => res.render('courses/edit', {
+            course: mongooseToObject(course)
+        }))
+        .catch(next);
+    }
 }
 
 module.exports = new CourseController;

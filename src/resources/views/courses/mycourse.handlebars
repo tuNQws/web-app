@@ -1,0 +1,24 @@
+<a href="api/v1/courses/create" class="btn btn-primary mt-4" aria-current="page">Create</a>
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each courses}}
+        <tr>
+            <th scope="row">{{@index}}</th>
+            <td>{{this.title}}</td>
+            <td>{{this.description}}</td>
+            <td>
+                <a href="/courses/{{this._id}}/edit" class="btn btn-link">Update</a>
+                <a href="#" class="btn btn-link">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -34,12 +34,6 @@ app.get('/', (req, res) => {
 //Route init
 route(app);
 
-// const COURSES = [
-//     { id: 1, name: "Nodejs"},
-//     { id: 2, name: "Reactjs"},
-//     { id: 3, name: "PHP"}
-// ];
-
 app.listen(port, () => {
     console.log(`App running on ${port}`);
 });

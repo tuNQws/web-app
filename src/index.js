@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 const app = express();
+const methodOverride = require('method-override');
 const handlebars = require("express-handlebars");
 const db = require('./config/db');
 const route = require('./routes');
@@ -21,6 +22,8 @@ db.connect();
 
 //HTTP Logger
 app.use(morgan('combined'));
+
+app.use(methodOverride('_method'));
 
 //Template engine
 app.engine('handlebars', handlebars.engine());

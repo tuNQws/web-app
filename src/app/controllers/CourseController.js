@@ -16,14 +16,6 @@ class CourseController{
         .catch(next);
     }
 
-    show(req, res, next){
-        Course.findOne({ slug: req.params.slug })
-        .then(course => {
-            res.json(course);
-        })
-        .catch(next);
-    }
-
     edit(req, res, next){
         Course.findById(req.params.id)
         .then(course => res.render('courses/edit', {
@@ -31,6 +23,23 @@ class CourseController{
         }))
         .catch(next);
     }
+
+    update(req, res, next){
+        Course.updateOne({ _id: req.params.id }, req.body)
+        .then(() => {
+            res.redirect('/courses');
+        })
+        .catch(next);
+    }
+
+    delete(req, res, next){
+        Course.deleteOne({ _id: req.params.id })
+        .then(() =>{
+            res.redirect('back');
+        })
+        .catch(next);
+    }
+
 }
 
 module.exports = new CourseController;
